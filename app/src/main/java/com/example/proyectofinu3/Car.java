@@ -6,6 +6,7 @@ public class Car {
     private int year;
     private EngineType engine;
     private int image;
+    private boolean favorite = false;
 
     public enum EngineType{
         V6,
@@ -23,6 +24,10 @@ public class Car {
         this.engine = engine;
         this.image = image;
     }
+
+    public void setFavorite(){this.favorite = !favorite;}
+
+    public boolean getFavorite(){return favorite;}
 
     public String getBrand() {
         return brand;
@@ -62,5 +67,14 @@ public class Car {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", favorite=" + favorite +
+                '}';
     }
 }

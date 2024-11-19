@@ -18,7 +18,7 @@
         android:weightSum="1">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/carPicture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -55,7 +55,7 @@
                 android:textSize="20sp" />
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/fav_switch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"

@@ -18,14 +18,14 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/search_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Buscar" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/favorites_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -33,12 +33,12 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="413dp"
-        android:layout_height="801dp"
+        android:id="@+id/rv_cars"
+        android:layout_width="411dp"
+        android:layout_height="747dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/car_item"/>
+        tools:listitem="@layout/car_item" />
 
     <TextView
         android:id="@+id/tv_title"
