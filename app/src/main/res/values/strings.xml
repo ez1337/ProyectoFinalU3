@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ProyectoFinU3</string>
+    <string name="app_name">tuClasicoApp</string>
+    <string name="empty_sms">Empty list</string>
 </resources>

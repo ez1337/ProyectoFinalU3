@@ -21,6 +21,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
 
     // Constructor de CarAdapter. Solo recibe la lista de coches desde MainActivity.
     public CarAdapter(ArrayList<Car> carList){
+
         this.carList = carList;
     }
 
@@ -47,18 +48,23 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
         holder.save.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                car.setFavorite();
                 if(isChecked){
-                    car.setFavorite();
                     System.out.println("Saved!");
-                    for(Car c : carList){
-                        if(c.getFavorite()){
-                            System.out.println(car.toString());
-                        }
-                    }
+                    showFavList(carList);
                 }
                 else{
-                    car.setFavorite();
                     System.out.println("Unsaved!");
+                    showFavList(carList);
+                }
+            }
+
+            public void showFavList(ArrayList<Car> carList){
+                for(Car c : carList){
+                    if(c.getFavorite()){
+                        System.out.println(c.toString());
+//                      Toast.makeText(,c.toString(),Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

@@ -1,6 +1,9 @@
 package com.example.proyectofinu3;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     public ArrayList<Car> cars;
 
@@ -65,6 +68,32 @@ public class MainActivity extends AppCompatActivity {
         // Asignar adaptador a RV
         rvCars.setAdapter(carAdapter);
 
+        Button favButton = findViewById(R.id.favorites_btn);
+        favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<Car> favList = new ArrayList<>();
+                for(Car c : cars){
+                    if(c.getFavorite()){
+                        favList.add(c);
+                    }
+                }
 
+                if(favList.isEmpty()){
+                    Toast.makeText(MainActivity.this,R.string.empty_sms, Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this,favList.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        Button srcButton = findViewById(R.id.search_btn);
+        srcButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,"TODO", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
