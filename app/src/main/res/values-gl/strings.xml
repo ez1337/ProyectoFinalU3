@@ -2,4 +2,10 @@
 <resources>
     <string name="app_name">tuClasicoApp</string>
     <string name="empty_sms">Lista baleira</string>
+    <string name="listBtn">Mostrar a lista</string>
+    <string name="searchBtn">Procurar</string>
+    <string name="titleHint">O teu título aquí</string>
+    <string name="title">tuClásicoApp</string>
+    <string name="saveCar">Gardar</string>
+    <string name="TODO">Funcionalidade non dispoñible actualmente</string>
 </resources>

@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_theme_secondaryContainer_highContrast"
+    android:theme="@style/Theme.ProyectoFinU3"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -22,14 +24,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Buscar" />
+            android:fontFamily="@font/roboto"
+            android:text="@string/searchBtn"
+            android:textColor="@color/md_theme_secondary"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/favorites_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ver lista" />
+            android:fontFamily="@font/roboto"
+            android:text="@string/listBtn"
+            android:textColor="@color/md_theme_secondary"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -42,13 +50,16 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="410dp"
-        android:layout_height="32dp"
+        android:layout_width="411dp"
+        android:layout_height="39dp"
         android:layout_marginTop="4dp"
-        android:background="#673AB7"
-        android:hint="your title here"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        android:background="@color/md_theme_primaryFixed_highContrast"
+        android:fontFamily="@font/roboto_serif_light"
+        android:hint="@string/titleHint"
+        android:text="@string/title"
+        android:textColor="@color/md_theme_secondaryFixed"
+        android:textColorHint="?attr/colorOnSecondary"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

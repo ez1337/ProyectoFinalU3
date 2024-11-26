@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity{
                 new Car("Ferrari", "250 GTO", 1962, Car.EngineType.V12, R.drawable.ferrari_250gto),
                 new Car("Lamborghini", "Miura", 1966, Car.EngineType.V12, R.drawable.lambo_miura),
                 new Car("Ford", "Mustang Boss 429", 1969, Car.EngineType.V8, R.drawable.mustang_boss429),
-                new Car("Porsche", "911 Carrera RS 2.7", 1973, Car.EngineType.Other, R.drawable.porsche_911_carrera_rs),
+                new Car("Porsche", "911 Carrera RS 2.7", 1973, Car.EngineType.Flat6, R.drawable.porsche_911_carrera_rs),
                 new Car("Chevrolet", "Corvette Stingray", 1963, Car.EngineType.V8, R.drawable.corvette),
                 new Car("Jaguar", "E-Type", 1961, Car.EngineType.Inline6, R.drawable.jag_etype),
                 new Car("BMW", "2002 Turbo", 1973, Car.EngineType.Inline4, R.drawable.bmw_2002_turbo),
@@ -49,11 +49,13 @@ public class MainActivity extends AppCompatActivity{
                 new Car("Toyota", "2000GT", 1967, Car.EngineType.Inline6, R.drawable.toyota_2000gt),
                 new Car("Nissan", "Skyline GT-R (Hakosuka)", 1971, Car.EngineType.Inline6, R.drawable.skyline_kpgc10),
                 new Car("Shelby", "Cobra 427", 1965, Car.EngineType.V8, R.drawable.cobra_427),
-                new Car("Volkswagen", "Beetle", 1963, Car.EngineType.Other, R.drawable.vw_beetle),
+                new Car("Volkswagen", "Beetle", 1963, Car.EngineType.Flat4, R.drawable.vw_beetle),
                 new Car("Citroën", "DS", 1955, Car.EngineType.Inline4, R.drawable.citroen_ds),
                 new Car("Subaru", "360", 1958, Car.EngineType.Other, R.drawable.subaru_360),
                 new Car("Honda", "S800", 1966, Car.EngineType.Inline4, R.drawable.honda_s800),
-                new Car("Maserati", "Ghibli", 1967, Car.EngineType.V8, R.drawable.maserati_ghibli)
+                new Car("Maserati", "Ghibli", 1967, Car.EngineType.V8, R.drawable.maserati_ghibli),
+                new Car("Mazda", "Cosmo", 1967, Car.EngineType.Wankel, R.drawable.cosmo_110s),
+                new Car("Lancia", "Stratos HF", 1973, Car.EngineType.V6, R.drawable.stratos)
         ));
 
         // Inicializacion del adaptador
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity{
         srcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this,"TODO", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,R.string.TODO, Toast.LENGTH_SHORT).show();
             }
         });
     }

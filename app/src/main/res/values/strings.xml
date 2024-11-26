@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">tuClasicoApp</string>
     <string name="empty_sms">Empty list</string>
+    <string name="listBtn">Show list</string>
+    <string name="searchBtn">Search</string>
+    <string name="titleHint">Your title here</string>
+    <string name="title">tuClasicoApp</string>
+    <string name="saveCar">Save</string>
+    <string name="TODO">TODO</string>
 </resources>

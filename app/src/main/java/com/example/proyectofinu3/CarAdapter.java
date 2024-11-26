@@ -1,5 +1,6 @@
 package com.example.proyectofinu3;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
         this.carList = carList;
     }
 
+
+    // Este método crea los ViewHolder de cada coche
     @NonNull
     @Override
     public CarAdapter.CarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,11 +53,11 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 car.setFavorite();
                 if(isChecked){
-                    System.out.println("Saved!");
+                    Log.i("INFO","Car: "+car.getBrand()+" "+car.getModel()+" saved!");
                     showFavList(carList);
                 }
                 else{
-                    System.out.println("Unsaved!");
+                    Log.i("INFO","Car: "+car.getBrand()+" "+car.getModel()+" unsaved!");
                     showFavList(carList);
                 }
             }
@@ -63,7 +66,6 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
                 for(Car c : carList){
                     if(c.getFavorite()){
                         System.out.println(c.toString());
-//                      Toast.makeText(,c.toString(),Toast.LENGTH_SHORT).show();
                     }
                 }
             }
