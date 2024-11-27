@@ -8,4 +8,8 @@
     <string name="title">tuClásicoApp</string>
     <string name="saveCar">Guardar</string>
     <string name="TODO">Funcionalidad próxima a implementar</string>
+    <string name="NULL_ERROR">Objeto null encontrado en lista. Pos:</string>
+    <string name="IMG_NOT_FOUND">Imagen no encontrada en el item</string>
+    <string name="NULL_PROPERTIES">"Una o más propiedades son nulas o vacías en el item "</string>
+    <string name="STARTUP_WARNING">La aplicacion puede no funcionar bien debido a errores encontrados.</string>
 </resources>

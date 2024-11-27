@@ -7,4 +7,8 @@
     <string name="title">tuClasicoApp</string>
     <string name="saveCar">Save</string>
     <string name="TODO">TODO</string>
+    <string name="NULL_ERROR">Null item found. Pos:</string>
+    <string name="IMG_NOT_FOUND">Image not found in item</string>
+    <string name="NULL_PROPERTIES">One or more properties are null or empty in item</string>
+    <string name="STARTUP_WARNING">App may crash due to errors found</string>
 </resources>

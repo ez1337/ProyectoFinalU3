@@ -1,6 +1,7 @@
 package com.example.proyectofinu3;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -58,18 +60,45 @@ public class MainActivity extends AppCompatActivity{
                 new Car("Lancia", "Stratos HF", 1973, Car.EngineType.V6, R.drawable.stratos)
         ));
 
-        // Inicializacion del adaptador
-        CarAdapter carAdapter = new CarAdapter(cars);
+        /* Comprobación de existencia de un objeto Car nulo o de propiedades nulas en el objeto Car.
+        * Inicialización del adaptador, RecyclerView y layout en el bloque finally*/
+        int errorsFound = 0;
+        try{
+            for(int i = 0; i < cars.size(); i++){
+            Car c = cars.get(i);
+                if(c == null){
+                    errorsFound++;
+                    throw new NullPointerException(getResources().getString(R.string.NULL_ERROR) + i);
+                }
+                else if(c.getImage() == 0){
+                    errorsFound++;
+                    throw new Exception(getResources().getString(R.string.IMG_NOT_FOUND) + i);
+                }
+                else if(c.getBrand() == null || c.getModel() == null || c.getYear() == 0 || c.getEngine() == null){
+                    errorsFound++;
+                    throw new Exception(getResources().getString(R.string.NULL_PROPERTIES) + i);
+                }
+            }
+        }catch(Exception e){
+            Log.e("ERROR", Objects.requireNonNull(e.getMessage()));
+        }finally{
+            try{
+                if(errorsFound >= 1){
+                    throw new Exception(getResources().getString(R.string.STARTUP_WARNING));
+                }
+                CarAdapter carAdapter = new CarAdapter(cars);
 
-        // RecyclerView
-        RecyclerView rvCars = findViewById(R.id.rv_cars);
+                RecyclerView rvCars = findViewById(R.id.rv_cars);
 
-        // Tipo de layout manager
-        rvCars.setLayoutManager(new LinearLayoutManager(this));
+                rvCars.setLayoutManager(new LinearLayoutManager(this));
 
-        // Asignar adaptador a RV
-        rvCars.setAdapter(carAdapter);
+                rvCars.setAdapter(carAdapter);
+            }catch(Exception e){
+                Log.w("WARNING", Objects.requireNonNull(e.getMessage()));
+            }
+        }
 
+        /*Evento onClickListener para el botón que muestra la lista de coches favoritos en un toast*/
         Button favButton = findViewById(R.id.favorites_btn);
         favButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +109,6 @@ public class MainActivity extends AppCompatActivity{
                         favList.add(c);
                     }
                 }
-
                 if(favList.isEmpty()){
                     Toast.makeText(MainActivity.this,R.string.empty_sms, Toast.LENGTH_SHORT).show();
                 }
@@ -90,6 +118,8 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        /* Evento onClickListener para botón de búsqueda de coche por nombre.
+        * A implementar en siguiente versión*/
         Button srcButton = findViewById(R.id.search_btn);
         srcButton.setOnClickListener(new View.OnClickListener() {
             @Override
