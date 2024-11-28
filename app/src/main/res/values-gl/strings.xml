@@ -12,4 +12,5 @@
     <string name="IMG_NOT_FOUND">Non se atopou imaxe no elemento</string>
     <string name="NULL_PROPERTIES">"Unha ou varias propiedades son nulas ou baleias no elemento "</string>
     <string name="STARTUP_WARNING">É posible que a aplicación non funciona ben debido a erros atopados.</string>
+    <string name="EMPTY_LIST_ERROR">A fonte de datos está baleira.</string>
 </resources>

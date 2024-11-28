@@ -64,19 +64,27 @@ public class MainActivity extends AppCompatActivity{
         * Inicialización del adaptador, RecyclerView y layout en el bloque finally*/
         int errorsFound = 0;
         try{
-            for(int i = 0; i < cars.size(); i++){
-            Car c = cars.get(i);
-                if(c == null){
-                    errorsFound++;
-                    throw new NullPointerException(getResources().getString(R.string.NULL_ERROR) + i);
-                }
-                else if(c.getImage() == 0){
-                    errorsFound++;
-                    throw new Exception(getResources().getString(R.string.IMG_NOT_FOUND) + i);
-                }
-                else if(c.getBrand() == null || c.getModel() == null || c.getYear() == 0 || c.getEngine() == null){
-                    errorsFound++;
-                    throw new Exception(getResources().getString(R.string.NULL_PROPERTIES) + i);
+            if(cars.isEmpty()){
+                errorsFound++;
+                throw new Exception(getResources().getString(R.string.EMPTY_LIST_ERROR));
+            }
+            else{
+                for(int i = 0; i < cars.size(); i++){
+                Car c = cars.get(i);
+                    if(c == null){
+                        errorsFound++;
+                        throw new NullPointerException(getResources().getString(R.string.NULL_ERROR) + i);
+                    }
+                    else if(c.getImage() == 0){
+                        errorsFound++;
+                        throw new Exception(getResources().getString(R.string.IMG_NOT_FOUND) + i);
+                    }
+                    else if(c.getBrand() == null || c.getBrand().isBlank() || c.getBrand().isEmpty() ||
+                            c.getModel() == null || c.getModel().isBlank() || c.getModel().isEmpty() ||
+                            c.getYear() == 0 || c.getEngine() == null){
+                        errorsFound++;
+                        throw new Exception(getResources().getString(R.string.NULL_PROPERTIES) + i);
+                    }
                 }
             }
         }catch(Exception e){
