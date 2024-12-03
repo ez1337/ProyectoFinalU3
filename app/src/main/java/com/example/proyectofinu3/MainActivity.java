@@ -125,55 +125,63 @@ public class MainActivity extends AppCompatActivity{
             }
         }
 
-        TabLayout tabLayout = findViewById(R.id.tabSelector);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                Snackbar snackbar = Snackbar.make(findViewById(R.id.main),"Próximamente",Snackbar.LENGTH_SHORT);
-                snackbar.show();
-            }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
 
-            }
+        if(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT == this.getResources().getConfiguration().orientation){
+            TabLayout tabLayout = findViewById(R.id.tabSelector);
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    Snackbar snackbar = Snackbar.make(findViewById(R.id.main),"Próximamente",Snackbar.LENGTH_SHORT);
+                    snackbar.show();
+                }
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                Snackbar snackbar = Snackbar.make(findViewById(R.id.main),"Pestaña re-seleccionada",Snackbar.LENGTH_SHORT);
-                snackbar.show();
-            }
-        });
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+                    Snackbar snackbar = Snackbar.make(findViewById(R.id.main),"Pestaña re-seleccionada",Snackbar.LENGTH_SHORT);
+                    snackbar.show();
+                }
+            });
+        }
+        else{
+            TabLayout tabLayout = findViewById(R.id.tabSelector);
+            tabLayout.setVisibility(View.GONE);
+        }
 
         /*Evento onClickListener para el botón que muestra la lista de coches favoritos en un toast*/
         Button favButton = findViewById(R.id.list_btn);
-        favButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ArrayList<Car> favList = new ArrayList<>();
-                for(Car c : cars){
-                    if(c.getFavorite()){
-                        favList.add(c);
-                    }
-                }
-                if(favList.isEmpty()){
-                    Toast.makeText(MainActivity.this,R.string.empty_sms, Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(MainActivity.this,favList.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        favButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ArrayList<Car> favList = new ArrayList<>();
+//                for(Car c : cars){
+//                    if(c.getFavorite()){
+//                        favList.add(c);
+//                    }
+//                }
+//                if(favList.isEmpty()){
+//                    Toast.makeText(MainActivity.this,R.string.empty_sms, Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    Toast.makeText(MainActivity.this,favList.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
         /* Evento onClickListener para botón de búsqueda de coche por nombre.
         * A implementar en siguiente versión*/
         Button srcButton = findViewById(R.id.search_btn);
-        srcButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this,R.string.TODO, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        srcButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(MainActivity.this,R.string.TODO, Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
