@@ -11,9 +11,10 @@
 
     <TextView
         android:id="@+id/tv_title2"
-        android:layout_width="411dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="259dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
         android:background="@color/md_theme_primaryFixed_highContrast"
         android:fontFamily="@font/roboto_serif_light"
         android:hint="@string/titleHint"
@@ -21,25 +22,24 @@
         android:textColor="@color/md_theme_secondaryFixed"
         android:textColorHint="?attr/colorOnSecondary"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cars"
-        android:layout_width="407dp"
-        android:layout_height="664dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="371dp"
+        android:layout_height="412dp"
         android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/car_item" />
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="411dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="260dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="16dp"
         android:background="@color/md_theme_primaryFixed_highContrast"
         android:fontFamily="@font/roboto_serif_light"
         android:hint="@string/titleHint"
@@ -47,27 +47,26 @@
         android:textColor="@color/md_theme_secondaryFixed"
         android:textColorHint="?attr/colorOnSecondary"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabSelector"
-        android:layout_width="412dp"
-        android:layout_height="63dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="258dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/searchBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title2" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/searchBtn" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/listBtn" />
-
-    </com.google.android.material.tabs.TabLayout>
+    <Button
+        android:id="@+id/list_btn"
+        android:layout_width="262dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/listBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

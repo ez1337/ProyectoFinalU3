@@ -1,5 +1,6 @@
 package com.example.proyectofinu3;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity{
             return insets;
         });
 
+        this.setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
+        );
         // Conjunto de datos
 
         cars = new ArrayList<>(Arrays.asList(
@@ -141,35 +145,35 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-//        /*Evento onClickListener para el botón que muestra la lista de coches favoritos en un toast*/
-//        Button favButton = findViewById(R.id.favorites_btn);
-//        favButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ArrayList<Car> favList = new ArrayList<>();
-//                for(Car c : cars){
-//                    if(c.getFavorite()){
-//                        favList.add(c);
-//                    }
-//                }
-//                if(favList.isEmpty()){
-//                    Toast.makeText(MainActivity.this,R.string.empty_sms, Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    Toast.makeText(MainActivity.this,favList.toString(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//
-//        /* Evento onClickListener para botón de búsqueda de coche por nombre.
-//        * A implementar en siguiente versión*/
-//        Button srcButton = findViewById(R.id.search_btn);
-//        srcButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(MainActivity.this,R.string.TODO, Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        /*Evento onClickListener para el botón que muestra la lista de coches favoritos en un toast*/
+        Button favButton = findViewById(R.id.list_btn);
+        favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<Car> favList = new ArrayList<>();
+                for(Car c : cars){
+                    if(c.getFavorite()){
+                        favList.add(c);
+                    }
+                }
+                if(favList.isEmpty()){
+                    Toast.makeText(MainActivity.this,R.string.empty_sms, Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this,favList.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        /* Evento onClickListener para botón de búsqueda de coche por nombre.
+        * A implementar en siguiente versión*/
+        Button srcButton = findViewById(R.id.search_btn);
+        srcButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,R.string.TODO, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
