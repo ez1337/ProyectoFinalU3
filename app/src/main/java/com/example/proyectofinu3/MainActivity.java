@@ -2,17 +2,27 @@ package com.example.proyectofinu3;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -93,39 +103,86 @@ public class MainActivity extends AppCompatActivity{
                 rvCars.setLayoutManager(new LinearLayoutManager(this));
 
                 rvCars.setAdapter(carAdapter);
+
+                TextView tv_title = findViewById(R.id.tv_title);
+                registerForContextMenu(tv_title);
+
+                TextView tv_title2 = findViewById(R.id.tv_title2);
+                tv_title2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showPopUpMenu(tv_title2);
+                    }
+                });
+
+
             }catch(Exception e){
                 Log.w("WARNING", Objects.requireNonNull(e.getMessage()));
             }
         }
 
-        /*Evento onClickListener para el botón que muestra la lista de coches favoritos en un toast*/
-        Button favButton = findViewById(R.id.favorites_btn);
-        favButton.setOnClickListener(new View.OnClickListener() {
+        TabLayout tabLayout = findViewById(R.id.tabSelector);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View view) {
-                ArrayList<Car> favList = new ArrayList<>();
-                for(Car c : cars){
-                    if(c.getFavorite()){
-                        favList.add(c);
-                    }
-                }
-                if(favList.isEmpty()){
-                    Toast.makeText(MainActivity.this,R.string.empty_sms, Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(MainActivity.this,favList.toString(), Toast.LENGTH_SHORT).show();
-                }
+            public void onTabSelected(TabLayout.Tab tab) {
+                Snackbar snackbar = Snackbar.make(findViewById(R.id.main),"Próximamente",Snackbar.LENGTH_SHORT);
+                snackbar.show();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                Snackbar snackbar = Snackbar.make(findViewById(R.id.main),"Pestaña re-seleccionada",Snackbar.LENGTH_SHORT);
+                snackbar.show();
             }
         });
 
-        /* Evento onClickListener para botón de búsqueda de coche por nombre.
-        * A implementar en siguiente versión*/
-        Button srcButton = findViewById(R.id.search_btn);
-        srcButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this,R.string.TODO, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        /*Evento onClickListener para el botón que muestra la lista de coches favoritos en un toast*/
+//        Button favButton = findViewById(R.id.favorites_btn);
+//        favButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ArrayList<Car> favList = new ArrayList<>();
+//                for(Car c : cars){
+//                    if(c.getFavorite()){
+//                        favList.add(c);
+//                    }
+//                }
+//                if(favList.isEmpty()){
+//                    Toast.makeText(MainActivity.this,R.string.empty_sms, Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    Toast.makeText(MainActivity.this,favList.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//
+//        /* Evento onClickListener para botón de búsqueda de coche por nombre.
+//        * A implementar en siguiente versión*/
+//        Button srcButton = findViewById(R.id.search_btn);
+//        srcButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(MainActivity.this,R.string.TODO, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+        menu.setHeaderTitle(R.string.TODO);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.contact_menu,menu);
+    }
+
+    public void showPopUpMenu(TextView tv){
+        PopupMenu popupMenu = new PopupMenu(this,tv);
+        MenuInflater menuInflater = popupMenu.getMenuInflater();
+        menuInflater.inflate(R.menu.contact_menu,popupMenu.getMenu());
+        popupMenu.show();
     }
 }

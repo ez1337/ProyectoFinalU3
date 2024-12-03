@@ -11,4 +11,5 @@
     <string name="IMG_NOT_FOUND">Image not found in item</string>
     <string name="NULL_PROPERTIES">One or more properties are null or empty in item</string>
     <string name="STARTUP_WARNING">App may crash due to errors found</string>
+    <string name="contactInfo">Contact info</string>
 </resources>

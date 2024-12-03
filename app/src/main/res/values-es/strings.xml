@@ -12,4 +12,5 @@
     <string name="IMG_NOT_FOUND">Imagen no encontrada en el item</string>
     <string name="NULL_PROPERTIES">"Una o más propiedades son nulas o vacías en el item "</string>
     <string name="STARTUP_WARNING">La aplicacion puede no funcionar bien debido a errores encontrados.</string>
+    <string name="contactInfo">Información de contacto</string>
 </resources>

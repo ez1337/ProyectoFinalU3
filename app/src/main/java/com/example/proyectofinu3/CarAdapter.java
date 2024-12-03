@@ -2,7 +2,9 @@ package com.example.proyectofinu3;
 
 import android.content.res.Resources;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
@@ -16,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
-
 
     // Contenedor de datos
     private ArrayList<Car> carList;
@@ -96,5 +97,6 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
             save = itemView.findViewById(R.id.fav_switch);
 
         }
+
     }
 }
