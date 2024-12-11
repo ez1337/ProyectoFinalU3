@@ -11,4 +11,6 @@
     <string name="IMG_NOT_FOUND">Image not found in item</string>
     <string name="NULL_PROPERTIES">One or more properties are null or empty in item</string>
     <string name="STARTUP_WARNING">App may crash due to errors found</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

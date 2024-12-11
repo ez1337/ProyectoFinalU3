@@ -40,13 +40,7 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_cars"
-        android:layout_width="411dp"
-        android:layout_height="747dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/car_item" />
+
 
     <TextView
         android:id="@+id/tv_title"
@@ -62,4 +56,14 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.example.proyectofinu3.RVCarFragment"
+        android:layout_width="407dp"
+        android:layout_height="798dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

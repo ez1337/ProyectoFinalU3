@@ -1,6 +1,8 @@
 package com.example.proyectofinu3;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +26,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity{
 
     public ArrayList<Car> cars;
+    private static final String RV_KEY = "cars-db";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,9 @@ public class MainActivity extends AppCompatActivity{
                 new Car("Lancia", "Stratos HF", 1973, Car.EngineType.V6, R.drawable.stratos)
         ));
 
+        if(cars.isEmpty()){
+            Log.e("ERROR","Array list de coches esta vacio o nulo");
+        }
         /* Comprobación de existencia de un objeto Car nulo o de propiedades nulas en el objeto Car.
         * Inicialización del adaptador, RecyclerView y layout en el bloque finally*/
         int errorsFound = 0;
@@ -86,13 +94,15 @@ public class MainActivity extends AppCompatActivity{
                 if(errorsFound >= 1){
                     throw new Exception(getResources().getString(R.string.STARTUP_WARNING));
                 }
-                CarAdapter carAdapter = new CarAdapter(cars);
 
-                RecyclerView rvCars = findViewById(R.id.rv_cars);
+                RVCarFragment fragment = new RVCarFragment();
+                Bundle rvCarsBundle = new Bundle();
+                rvCarsBundle.putParcelableArrayList(RV_KEY, cars);
 
-                rvCars.setLayoutManager(new LinearLayoutManager(this));
+                fragment.setArguments(rvCarsBundle);
+                getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainerView,fragment).commit();
 
-                rvCars.setAdapter(carAdapter);
+
             }catch(Exception e){
                 Log.w("WARNING", Objects.requireNonNull(e.getMessage()));
             }
@@ -128,4 +138,5 @@ public class MainActivity extends AppCompatActivity{
             }
         });
     }
+
 }
