@@ -138,12 +138,12 @@ public class MainActivity extends AppCompatActivity{
 
                 }
                 else if(item.getItemId() == R.id.home_tab){
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    RVCarFragment homeFragment = (RVCarFragment) fragmentManager.findFragmentById(R.id.rv_cars);
+                    RVCarFragment homeFrag = (RVCarFragment) getSupportFragmentManager().
+                            findFragmentById(R.id.rv_cars);
 
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fragmentContainerView, Objects.requireNonNull(homeFragment),null)
+                            .replace(R.id.fragmentContainerView, Objects.requireNonNull(homeFrag),null)
                             .commit();
                 }
                 return true;
