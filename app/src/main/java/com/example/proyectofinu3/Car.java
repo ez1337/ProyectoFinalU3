@@ -42,7 +42,6 @@ public class Car implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int i) {
-
         dest.writeString(brand);
         dest.writeString(model);
         dest.writeInt(year);

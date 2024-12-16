@@ -25,9 +25,6 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity{
 
-    public ArrayList<Car> cars;
-    private static final String RV_KEY = "cars-db";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity{
 
         // Conjunto de datos
 
-        cars = new ArrayList<>(Arrays.asList(
+        ArrayList<Car> cars = new ArrayList<>(Arrays.asList(
                 new Car("Alfa Romeo", "Giulia GTA", 1964, Car.EngineType.Inline4, R.drawable.alfa_giulia),
                 new Car("Ferrari", "250 GTO", 1962, Car.EngineType.V12, R.drawable.ferrari_250gto),
                 new Car("Lamborghini", "Miura", 1966, Car.EngineType.V12, R.drawable.lambo_miura),
@@ -97,12 +94,10 @@ public class MainActivity extends AppCompatActivity{
 
                 RVCarFragment fragment = new RVCarFragment();
                 Bundle rvCarsBundle = new Bundle();
-                rvCarsBundle.putParcelableArrayList(RV_KEY, cars);
 
+                rvCarsBundle.putParcelableArrayList("cars-db", cars);
                 fragment.setArguments(rvCarsBundle);
                 getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainerView,fragment).commit();
-
-
             }catch(Exception e){
                 Log.w("WARNING", Objects.requireNonNull(e.getMessage()));
             }

@@ -59,7 +59,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.proyectofinu3.RVCarFragment"
         android:layout_width="407dp"
         android:layout_height="798dp"
         android:layout_marginTop="11dp"

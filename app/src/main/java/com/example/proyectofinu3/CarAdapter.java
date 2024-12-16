@@ -16,14 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
-
-
     // Contenedor de datos
-    private ArrayList<Car> carList;
+    ArrayList<Car> carList;
 
     // Constructor de CarAdapter. Solo recibe la lista de coches desde MainActivity.
     public CarAdapter(ArrayList<Car> carList){
-
         this.carList = carList;
     }
 
@@ -86,7 +83,6 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
         TextView tv_engine;
         Switch save;
 
-
         public CarViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.carPicture);
@@ -94,7 +90,6 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder>{
             tv_year = itemView.findViewById(R.id.tv_year);
             tv_engine = itemView.findViewById(R.id.tv_engine);
             save = itemView.findViewById(R.id.fav_switch);
-
         }
     }
 }
