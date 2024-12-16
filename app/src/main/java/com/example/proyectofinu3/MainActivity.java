@@ -4,11 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,6 +19,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -97,39 +102,51 @@ public class MainActivity extends AppCompatActivity{
 
                 rvCarsBundle.putParcelableArrayList("cars-db", cars);
                 fragment.setArguments(rvCarsBundle);
-                getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainerView,fragment).commit();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.fragmentContainerView,fragment)
+                        .addToBackStack(null)
+                        .commit();
             }catch(Exception e){
                 Log.w("WARNING", Objects.requireNonNull(e.getMessage()));
             }
         }
 
-        /*Evento onClickListener para el botón que muestra la lista de coches favoritos en un toast*/
-        Button favButton = findViewById(R.id.favorites_btn);
-        favButton.setOnClickListener(new View.OnClickListener() {
+        /* Barra de navegación entre tabs
+        * */
+        BottomNavigationView navView = findViewById(R.id.bottomNavBar);
+        navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                ArrayList<Car> favList = new ArrayList<>();
-                for(Car c : cars){
-                    if(c.getFavorite()){
-                        favList.add(c);
-                    }
-                }
-                if(favList.isEmpty()){
-                    Toast.makeText(MainActivity.this,R.string.empty_sms, Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(MainActivity.this,favList.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId() == R.id.search_tab){
+                    SearchFrgmnt searchFragment = new SearchFrgmnt();
 
-        /* Evento onClickListener para botón de búsqueda de coche por nombre.
-        * A implementar en siguiente versión*/
-        Button srcButton = findViewById(R.id.search_btn);
-        srcButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this,R.string.TODO, Toast.LENGTH_SHORT).show();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragmentContainerView, searchFragment,null)
+                            .addToBackStack(null)
+                            .commit();
+                }
+                else if(item.getItemId() == R.id.favlist_tab){
+                    FavlistFrgmnt favFragment = new FavlistFrgmnt();
+
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragmentContainerView, favFragment,null)
+                            .addToBackStack(null)
+                            .commit();
+
+                }
+                else if(item.getItemId() == R.id.home_tab){
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    RVCarFragment homeFragment = (RVCarFragment) fragmentManager.findFragmentById(R.id.rv_cars);
+
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragmentContainerView, Objects.requireNonNull(homeFragment),null)
+                            .commit();
+                }
+                return true;
             }
         });
     }

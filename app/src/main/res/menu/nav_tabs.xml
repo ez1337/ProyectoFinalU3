@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_tab"
+
+        android:icon="@mipmap/home_icon"
+        android:title="Home" />
+    <item
+        android:id="@+id/search_tab"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/searchBtn" />
+    <item
+        android:id="@+id/favlist_tab"
+        android:icon="@mipmap/favlist_icon"
+        android:title="@string/listBtn" />
+</menu>
