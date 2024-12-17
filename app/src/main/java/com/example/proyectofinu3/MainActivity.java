@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity{
                 getSupportFragmentManager()
                         .beginTransaction()
                         .add(R.id.fragmentContainerView,fragment)
-                        .addToBackStack(null)
+                        .addToBackStack("HOME")
                         .commit();
             }catch(Exception e){
                 Log.w("WARNING", Objects.requireNonNull(e.getMessage()));
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity{
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.fragmentContainerView, searchFragment,null)
-                            .addToBackStack(null)
+                            .addToBackStack("SEARCH")
                             .commit();
                 }
                 else if(item.getItemId() == R.id.favlist_tab){
@@ -133,18 +133,13 @@ public class MainActivity extends AppCompatActivity{
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.fragmentContainerView, favFragment,null)
-                            .addToBackStack(null)
+                            .addToBackStack("FAVLIST")
                             .commit();
 
                 }
                 else if(item.getItemId() == R.id.home_tab){
-                    RVCarFragment homeFrag = (RVCarFragment) getSupportFragmentManager().
-                            findFragmentById(R.id.rv_cars);
-
                     getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fragmentContainerView, Objects.requireNonNull(homeFrag),null)
-                            .commit();
+                            .popBackStack("HOME",0);
                 }
                 return true;
             }
